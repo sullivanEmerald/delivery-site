@@ -1948,6 +1948,27 @@ section {
   width: 30%;
 }
 
+.loginSection{
+  width: 80%;
+  margin: auto;
+}
+
+.loginSection button{
+  display: block;
+  margin: 20px auto;
+}
+
+.loginform {
+  width: 60%;
+  margin: auto;
+}
+
+.parcelTable {
+  width: 80%;
+  margin: auto;
+  overflow-x:auto;
+}
+
 @media (max-width: 768px) {
   .parcelPage > section {
     flex-direction: column;
@@ -1957,4 +1978,10 @@ section {
     width: 80%;
     margin: auto;
   }
+
+  .loginSection{
+    width: 100%;
+
+  }
+  
 }

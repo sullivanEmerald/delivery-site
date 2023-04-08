@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title> Euro Transit - Index</title>
+  <title><%= title %></title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -43,15 +43,14 @@
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="/admin">Home</a></li>
-          <li><a href="/admin/dashboard">Create Order</a></li>
-          <li><a href="/admin/vieworders">View Orders</a></li>
-          <li><a href="/logout">Log Out</a></li>
-
-        </ul>
+            <li class="active"><a href="/admin">Home</a></li>
+            <li><a href="/admin/dashboard">Create Order</a></li>
+            <li><a href="/admin/vieworders">View Orders</a></li>
+            <li><a href="/logout">Log Out</a></li>
+  
+          </ul>
       </nav><!-- .nav-menu -->
 
-      <a href="#about" class="get-started-btn scrollto">Get Started</a>
 
     </div>
   </header><!-- End Header -->
@@ -86,92 +85,77 @@
 
 
     <!-- ======= About Us Section ======= -->
-    <section id="create" class="about">
+    <section id="create" class="parcelTable">
       <div class="container" data-aos="fade-up">
-
         <div class="section-title">
-          <h2>CREATE A PARCEL</h2>
+          <h2>All Parcels Created</h2>
         </div>
-
-        
-          <div id="content">
-            
-            <form action="/createparcel" enctype="multipart/form-data" method="POST">
-                <h4>Sender's information</h4>
-                <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="enter sender name" name="sendername">
-                  </div>
-        
-                  <div class="form-floating">
-                    <input type="phone" class="form-control" id="floatingInput" placeholder="enter sender phone number" name="sendernumber">
-                  </div>
-        
-                  <div class="form-floating">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="enter sender email" name="senderemail">
-                  </div>
-        
-                  <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="enter sender address" name="senderaddress">
-                  </div>
-
-                  <h4>Reciever's information</h4>
-
-                  <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="enter reciever name" name="recievername">
-                  </div>
-        
-                  <div class="form-floating">
-                    <input type="phone" class="form-control" id="floatingInput" placeholder="enter reciever phone number" name="recievernumber">
-                  </div>
-        
-                  <div class="form-floating">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="enter reciever email" name="recieveremail">
-                  </div>
-        
-                  <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="enter reciever address" name="recieveraddress">
-                  </div>
-
-                  <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="enter reciever landmark" name="recieverlandmark">
-                  </div>
-
-                  <h4>Parcel information</h4>
-        
-                  <div class="mb-3">
-                    <label for="imgUpload" class="form-label">Image</label>
-                    <input type="file" class="form-control" id="imageUpload" name="file">
-                  </div>
-
-
-                  <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="enter departing station or country" name="parcelstation">
-                  </div>
-
-                  <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="enter parcel status(send,pending, delivered, transit, custom withheld)" name="parcelstatus">
-                  </div>
-
-                  <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="enter state of delivery" name="arrival">
-                  </div>
-
-                  <div class="form-floating">
-                    <input type="date" class="form-control" id="floatingInput" placeholder="Date OF Arrival" name="date">
-                  </div>
-                  
-    
-                <button type="submit" class="btn btn-outline-primary btn-lg">Create Parcel</button>
-              </form>
-          </div>
-          <!-- <div class="col-lg-6 pt-4 pt-lg-0 aboutImg">
-            <img src="/images/parcel.jpg" alt="">
-          </div>
-        </div> -->
-
-      
+          <% if(!user.length) { %>
+            <p>No Parel have been created</p>
+          <% } else { %>    
+            <% let counter = 1; %>   
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                    <th>S/N</th>  
+                      <th>Sender Name</th>
+                      <th>Sender Mobile</th>
+                      <th>Sender Mail</th>
+                      <th>Sender Address</th>
+                      <th>Reciever Name</th>
+                      <th>Reciever Mobile</th>
+                      <th>Reciever Mail</th>
+                      <th>Reciever Address</th>
+                      <th>Reciever landmark</th>
+                      <th>Parcel Image</th>
+                      <th>Parcel station</th>
+                      <th>Parcel status</th>
+                      <th>Tracking Code</th>
+                      <th>Parcel Receipt No.</th>
+                      <th>Parcel ETA</th>
+                      <th>Parcel Delivery state</th>
+                      <th>Time Created</th>
+                      <th>Date Created</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% user.forEach((item) => { %>
+                        <tr>
+                            <td><%= counter++ %></td>
+                            <td><%= item.sendername %></td>
+                            <td><%= item.sendernumber %></td>
+                            <td><%= item.senderemail %></td>
+                            <td><%= item.senderaddress %></td>
+                            <td><%= item.recievername %></td>
+                            <td><%= item.recievernumber %></td>
+                            <td><%= item.recieveremail %></td>
+                            <td><%= item.recieveraddress %></td>
+                            <td><%= item.recieverlandmark %></td>
+                            <td><img src="<%= item.parcelimage %>" width="80%" alt=""></td>
+                            <td><%= item.parcelstation %></td>
+                            <td><%= item.parcelstatus %></td>
+                            <td><%= item.parcelcode %></td>
+                            <td><%= item.parcelreference %></td>
+                            <td><%= item.eta %></td>
+                            <td><%= item.state %></td>
+                            <td><%= item.date %></td>
+                            <td><%= item.time %></td>
+                            <td><a href="/edit/<%= item._id %>" class="btn btn-outline-primary btn-lg">Edit</a></td>
+                            <td>
+                                <form action="/delete/<%= item._id %>?_method=DELETE" method="post">
+                                    <button type="submit" class="btn btn-outline-primary btn-lg">delete</a>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }) %>
+                  </tbody>
+                </table>
+              </div>
+              
+            <% } %> 
+      </div>
     </section><!-- End About Us Section -->
-
+ 
 
 
   </main><!-- End #main -->
@@ -219,7 +203,7 @@
 
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Our Social Networks</h4>
-            <p>Connect with us on our various social media handles</p>
+            <p>Connect with us on our various Social Media handles</p>
             <div class="social-links mt-3">
               <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
               <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
@@ -237,13 +221,13 @@
       <div class="copyright">
         &copy; Copyright <strong><span>Euro Transit</span></strong>. All Rights Reserved
       </div>
-      
     </div>
   </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
   <div id="preloader"></div>
-
+  
+ 
   <!-- Vendor JS Files -->
   <script src="/assets/vendor/jquery/jquery.min.js"></script>
   <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

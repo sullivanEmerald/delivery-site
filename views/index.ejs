@@ -51,7 +51,6 @@
         </ul>
       </nav><!-- .nav-menu -->
 
-      <a href="#about" class="get-started-btn scrollto">Get Started</a>
 
     </div>
   </header><!-- End Header -->
@@ -72,6 +71,12 @@
                 <button class="btn btn-primary btn-lg" id="heroTrackButton" type="submit">Find Order</button>
               </div>
             </form>
+            <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
+              <div class="alert alert-danger"><%= el.msg %></div>
+              <% }) %> <% } %> <% if (locals.messages.info) { %> <%
+              messages.info.forEach( el => { %>
+              <div class="alert alert-info"><%= el.msg %></div>
+              <% }) %> <% } %>
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
@@ -237,7 +242,7 @@
 
         <div class="row">
           <div class="col-lg-9 text-center text-lg-left">
-            <h3>Global Express Tracking Delivery Company</h3>
+            <h3>Euro Transit Tracking Delivery Company</h3>
             <p> Are you looking for a trusted and reliable logistic company to handle your package delivery? Are you looking for a fast services? Why not try Gobal Express Tracking Delivery Company out today and experience the best...</p>
           </div>
           <div class="col-lg-3 cta-btn-container text-center">
@@ -254,6 +259,12 @@
         TRACK YOUR PACKAGE HERE
       </h3>
       <p>Enter tracking id in the input below to see package status</p>
+      <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
+        <div class="alert alert-danger"><%= el.msg %></div>
+        <% }) %> <% } %> <% if (locals.messages.info) { %> <%
+        messages.info.forEach( el => { %>
+        <div class="alert alert-info"><%= el.msg %></div>
+        <% }) %> <% } %>
       <form action="/getparcel" method="POST">
         <div class="mb-3 trackInput" style="position: relative;" >
           <input type="text" class="form-control" placeholder="Tracking ID" style="height: 60px; border-radius: 10px;" name="parcel">
@@ -466,7 +477,7 @@
 
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Our Social Networks</h4>
-            <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
+            <p>You can connect with us on our various social network platforms</p>
             <div class="social-links mt-3">
               <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
               <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
@@ -482,14 +493,7 @@
 
     <div class="container footer-bottom clearfix">
       <div class="copyright">
-        &copy; Copyright <strong><span>Arsha</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        &copy; Copyright <strong><span>Euro Transit</span></strong>. All Rights Reserved
       </div>
     </div>
   </footer><!-- End Footer -->

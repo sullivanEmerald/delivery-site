@@ -1,5 +1,5 @@
-const cloudinary = require('../middlewares/cloudinary')
-const parcel =  require('../model/parcel')
+const cloudinary = require('../middlewares/cloudinary');
+const parcel = require('../models/parcel');
 
 function generatecode(){
     let result = '';
@@ -29,6 +29,14 @@ module.exports = {
     },
 
     adminIndex : async (req, res) => {
+        try {
+            res.render('login.ejs',  { title : 'Admin Page'})
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+    getdashboard : async (req, res) => {
         try {
             res.render('admin.ejs',  { title : 'Admin Page'})
         } catch (error) {
@@ -128,11 +136,32 @@ module.exports = {
 
     clientParcel : async (req, res) => {
         try {
+            const validationErrors = [];
+
             let parcelno = req.body.parcel
-            console.log(parcelno)
+
+            if (isNaN(parcelno)){
+                validationErrors.push({ msg: "Parcel Tracking ID can only be Numbers" });
+            }
+
+            if (parcelno === ''){
+                validationErrors.push({ msg: "You have not entered a tracking ID" });
+            }
+    
             const parcelinfo =  await parcel.find({ parcelcode : parcelno})
-            const user = parcelinfo[0]
-            res.redirect(`/parcel/user/${user._id}`)
+
+            if(parcelinfo.length < 1){
+                validationErrors.push({ msg: "The Number Entered is not registered as a tracking ID" });
+            }
+
+            if (validationErrors.length) {
+                req.flash("errors", validationErrors);
+                return res.redirect("/");
+              }else{
+                const user = parcelinfo[0]
+                res.redirect(`/parcel/user/${user._id}`)
+              }
+            
         } catch (error) {
             console.error(error)
         }
@@ -142,6 +171,31 @@ module.exports = {
         try {
             const user =  await parcel.findById(req.params.id)
             res.render('parcel.ejs', { title : user.recievername, user : user})
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+    getall :  async (req, res) => {
+        try {
+            const logistics =  await parcel.find().lean()
+            res.render('getall.ejs', { title : 'All Parcels' , user : logistics})
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+    deleteParcel : async (req, res) => {
+        console.log(req.params.id)      
+        try {
+            // Find post by id
+      let result = await parcel.findById( req.params.id );
+      // Delete image from cloudinary
+      await cloudinary.uploader.destroy(result.cloudinaryId);
+      // Delete post from db
+      await parcel.remove({ _id: req.params.id });
+      console.log("Deleted Recipe");
+      res.redirect("/admin/vieworders");
         } catch (error) {
             console.error(error)
         }

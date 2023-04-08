@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title> Euro Transit - Index</title>
+  <title><%= title %></title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -44,14 +44,12 @@
       <nav class="nav-menu d-none d-lg-block">
         <ul>
           <li class="active"><a href="/admin">Home</a></li>
-          <li><a href="/admin/dashboard">Create Order</a></li>
+          <li><a href="/admin">Create Order</a></li>
           <li><a href="/admin/vieworders">View Orders</a></li>
-          <li><a href="/logout">Log Out</a></li>
-
+          <li><a href="/logout">Contact</a></li>
         </ul>
       </nav><!-- .nav-menu -->
 
-      <a href="#about" class="get-started-btn scrollto">Get Started</a>
 
     </div>
   </header><!-- End Header -->
@@ -86,92 +84,49 @@
 
 
     <!-- ======= About Us Section ======= -->
-    <section id="create" class="about">
+    <section id="create" class="">
       <div class="container" data-aos="fade-up">
-
         <div class="section-title">
-          <h2>CREATE A PARCEL</h2>
+          <h2>LOGIN AS ADMIN</h2>
+          <h4></h4>
         </div>
-
-        
-          <div id="content">
-            
-            <form action="/createparcel" enctype="multipart/form-data" method="POST">
-                <h4>Sender's information</h4>
-                <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="enter sender name" name="sendername">
-                  </div>
-        
-                  <div class="form-floating">
-                    <input type="phone" class="form-control" id="floatingInput" placeholder="enter sender phone number" name="sendernumber">
-                  </div>
-        
-                  <div class="form-floating">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="enter sender email" name="senderemail">
-                  </div>
-        
-                  <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="enter sender address" name="senderaddress">
-                  </div>
-
-                  <h4>Reciever's information</h4>
-
-                  <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="enter reciever name" name="recievername">
-                  </div>
-        
-                  <div class="form-floating">
-                    <input type="phone" class="form-control" id="floatingInput" placeholder="enter reciever phone number" name="recievernumber">
-                  </div>
-        
-                  <div class="form-floating">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="enter reciever email" name="recieveremail">
-                  </div>
-        
-                  <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="enter reciever address" name="recieveraddress">
-                  </div>
-
-                  <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="enter reciever landmark" name="recieverlandmark">
-                  </div>
-
-                  <h4>Parcel information</h4>
-        
-                  <div class="mb-3">
-                    <label for="imgUpload" class="form-label">Image</label>
-                    <input type="file" class="form-control" id="imageUpload" name="file">
-                  </div>
-
-
-                  <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="enter departing station or country" name="parcelstation">
-                  </div>
-
-                  <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="enter parcel status(send,pending, delivered, transit, custom withheld)" name="parcelstatus">
-                  </div>
-
-                  <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="enter state of delivery" name="arrival">
-                  </div>
-
-                  <div class="form-floating">
-                    <input type="date" class="form-control" id="floatingInput" placeholder="Date OF Arrival" name="date">
-                  </div>
-                  
-    
-                <button type="submit" class="btn btn-outline-primary btn-lg">Create Parcel</button>
-              </form>
+          <div id="">
+            <main class="container loginSection">
+                    <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
+                    <div class="alert alert-danger"><%= el.msg %></div>
+                    <% }) %> <% } %> <% if (locals.messages.info) { %> <%
+                    messages.info.forEach( el => { %>
+                    <div class="alert alert-info"><%= el.msg %></div>
+                    <% }) %> <% } %>
+                    <form action="/login" method="POST">
+                        <div class="loginform">
+                        <label for="exampleInputEmail1" class="form-label"
+                            >Email address</label
+                        >
+                        <input
+                            type="email"
+                            class="form-control"
+                            id="exampleInputEmail1"
+                            aria-describedby="emailHelp"
+                            name="email"
+                        />
+                        </div>
+                        <div class="loginform">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input
+                            type="password"
+                            class="form-control"
+                            id="exampleInputPassword1"
+                            name="password"
+                        />
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+</main>
           </div>
-          <!-- <div class="col-lg-6 pt-4 pt-lg-0 aboutImg">
-            <img src="/images/parcel.jpg" alt="">
-          </div>
-        </div> -->
-
-      
+      </div>
     </section><!-- End About Us Section -->
-
+ 
 
 
   </main><!-- End #main -->
@@ -219,7 +174,7 @@
 
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Our Social Networks</h4>
-            <p>Connect with us on our various social media handles</p>
+            <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
             <div class="social-links mt-3">
               <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
               <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
@@ -237,13 +192,13 @@
       <div class="copyright">
         &copy; Copyright <strong><span>Euro Transit</span></strong>. All Rights Reserved
       </div>
-      
     </div>
   </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
   <div id="preloader"></div>
-
+  
+ 
   <!-- Vendor JS Files -->
   <script src="/assets/vendor/jquery/jquery.min.js"></script>
   <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
