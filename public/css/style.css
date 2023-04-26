@@ -611,13 +611,14 @@ section {
 
 .clienscolumns > img {
   width: 18%;
-
 }
 
 @media (max-width: 768px) {
   .cliens img {
     max-width: 40%;
   }
+
+ 
 }
 
 /*--------------------------------------------------------------
@@ -977,6 +978,14 @@ section {
   .cta {
     background-attachment: scroll;
   }
+
+  .track {
+    width: 80%;
+  }
+
+  .trackInput{
+    width: 100%;
+  }
 }
 
 @media (min-width: 769px) {
@@ -985,6 +994,8 @@ section {
     align-items: center;
     justify-content: flex-end;
   }
+
+  
 }
 
 /*--------------------------------------------------------------
