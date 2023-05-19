@@ -91,24 +91,24 @@
         <div class="parcelPage">
             <section>
                 <section class="firstsection">
-                    <h4>Parcel Details</h4>
+                    <h4 class="text-info">Parcel Details</h4>
                     <p>TIme of Order : <%= user.time %> </p>
                     <p>Date of Order : <%= user.date %> </p> 
                     <p>ETA : <%= user.eta %> </p>
-                    <p>Status : <%= user.parcelstatus %> </p> 
+                    <p class="text-danger" style="font-weight: bold; font-size : 20px;">Status : <%= user.parcelstatus %> </p> 
                     <p>Receipt N0 : <%= user.parcelreference %> </p> 
                     <p>Track ID : <%= user.parcelcode %> </p>
                     <img src="<%= user.parcelimage %>" alt=""> 
                 </section>
                 <section>
-                    <h4>Sender Informations</h4>
+                    <h4 class="text-info">Sender Informations</h4>
                     <p>Name : <%= user.sendername %> </p>
                     <p>Email : <%= user.senderemail %> </p>
                     <p>Phone Number : <%= user.sendernumber %> </p>
                     <p>Address : <%= user.senderaddress %> </p>
                 </section>
                 <section>
-                    <h4>Reciever Informations</h4>
+                    <h4 class="text-info">Reciever Informations</h4>
                     <p>Name : <%= user.recievername %> </p>
                     <p>Email : <%= user.recieveremail %> </p>
                     <p>Phone Number : <%= user.recievernumber %> </p>

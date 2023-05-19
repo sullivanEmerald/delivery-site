@@ -50,7 +50,7 @@ module.exports = {
         const month = date.getMonth() + 1; // add 1 because getMonth() returns 0-11 for Jan-Dec
         const year = date.getFullYear();  
         const time = date.toLocaleTimeString();  
-        const result = await cloudinary.uploader.upload(req.file.path)
+        const result = await cloudinary.uploader.upload(req.file.path) 
         try {
             await parcel.create({
                 sendername : req.body.sendername,
@@ -65,7 +65,7 @@ module.exports = {
                 parcelimage : result.secure_url,
                 cloudinaryId : result.public_id,
                 parcelstation : req.body.parcelstation,
-                parcelstatus : req.body.parcelstatus,
+                parcelstatus : 'shipped',
                 parcelcode : generatecode(),
                 parcelreference : referenceNo(),
                 eta : req.body.date,
@@ -85,6 +85,7 @@ module.exports = {
     getParcel : async (req, res) => {
         try {
             const luggage = await parcel.findById(req.params.id)
+            console.log(luggage)
             res.render('luggage.ejs', { title : 'Luggages', luggage : luggage})
         } catch (error) {
             console.error(error)
@@ -113,7 +114,8 @@ module.exports = {
                 recieveraddress : req.body.recieveraddress,
                 recieverlandmark : req.body.recieverlandmark,
                 parcelstation : req.body.parcelstation,
-                parcelstatus : req.body.parcelstatus,
+                parcelstatus : req.body.status,
+                eta : req.body.date,
             })
             console.log('Successfully updated')
             const user =  await parcel.findById(req.params.id)

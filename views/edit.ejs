@@ -138,7 +138,19 @@
                   </div>
 
                   <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="enter parcel address" name="parcelstatus" value="<%= user.parcelstatus %>">
+                    <label style=" font-size: 20px; font-weight: bold;" id="statuselect" class="text-danger">Current Status : <%= user.parcelstatus %> </label>
+                    <select name="status" for="statuselect"  class="form-control">
+                      <option value="">Choose status</option>
+                      <option value="shipped">shipped</option>
+                      <option value="transit">Transit</option>
+                      <option value="return">Returned to Sender</option>
+                      <option value="sized">sized</option>
+                      <option value="released">Released</option>
+                    </select>
+                  </div>
+
+                  <div class="form-floating">
+                    <input type="date" class="form-control" id="floatingInput" placeholder="enter parcel address" name="date" value="<%= user.eta %>">
                   </div>
 
                   
@@ -149,10 +161,6 @@
       </div>
     </section><!-- End About Us Section -->
  
-            <p>Expected State of Delivery</p>
-            <p>Parcel Reference Code</p>
-            <p>Expeected date of Arrival (ETA)</p>
-
 
   </main><!-- End #main -->
 
