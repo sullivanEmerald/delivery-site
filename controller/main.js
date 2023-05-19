@@ -51,6 +51,7 @@ module.exports = {
         const year = date.getFullYear();  
         const time = date.toLocaleTimeString();  
         const result = await cloudinary.uploader.upload(req.file.path) 
+        const status = "Congratulations! A package has been sent to your address and phone number. Please use the tracking number provided to keep track of the package until our agent delivers it to you"
         try {
             await parcel.create({
                 sendername : req.body.sendername,
@@ -65,7 +66,8 @@ module.exports = {
                 parcelimage : result.secure_url,
                 cloudinaryId : result.public_id,
                 parcelstation : req.body.parcelstation,
-                parcelstatus : 'shipped',
+                parcelstatus : 'registered',
+                comment : status,
                 parcelcode : generatecode(),
                 parcelreference : referenceNo(),
                 eta : req.body.date,
@@ -116,6 +118,7 @@ module.exports = {
                 parcelstation : req.body.parcelstation,
                 parcelstatus : req.body.status,
                 eta : req.body.date,
+                comment : req.body.comment
             })
             console.log('Successfully updated')
             const user =  await parcel.findById(req.params.id)

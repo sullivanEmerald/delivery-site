@@ -141,13 +141,21 @@
                     <label style=" font-size: 20px; font-weight: bold;" id="statuselect" class="text-danger">Current Status : <%= user.parcelstatus %> </label>
                     <select name="status" for="statuselect"  class="form-control">
                       <option value="">Choose status</option>
+                      <option value="<%= user.parcelstatus %>" selected>Previous status</option>
                       <option value="shipped">shipped</option>
                       <option value="transit">Transit</option>
                       <option value="return">Returned to Sender</option>
                       <option value="sized">sized</option>
                       <option value="released">Released</option>
+                      <option value="registered">re-registered</option>
                     </select>
                   </div>
+
+                    <div class="form-floating">
+                      <textarea name="comment" class="form-control" id="" cols="30" rows="10">
+                        <%= user.comment.toString().trim() %>
+                      </textarea>
+                    </div>
 
                   <div class="form-floating">
                     <input type="date" class="form-control" id="floatingInput" placeholder="enter parcel address" name="date" value="<%= user.eta %>">

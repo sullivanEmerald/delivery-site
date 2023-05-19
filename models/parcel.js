@@ -81,6 +81,11 @@ const parcelSchema = new mongoose.Schema({
         type : String,
     },
 
+    comment: {
+        type : String,
+        required : true,
+    },
+
     date: {
         type : String,
         required : true

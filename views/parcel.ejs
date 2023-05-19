@@ -24,6 +24,8 @@
   <link href="/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <!-- Template Main CSS File -->
   <link href="/css/style.css" rel="stylesheet">
 
@@ -87,6 +89,9 @@
           <h2>Parcel Informations</h2>
           <h4>Tracking code : <%= user.parcelcode %> </h4>
           <h4>Date of Arrival : <%= user.eta %> </h4>
+            <i class="fa-solid fa-quote-left"></i>
+              <p><%= user.comment %></p>
+            <i class="fa-solid fa-quote-right"></i>
         </div>
         <div class="parcelPage">
             <section>
@@ -203,6 +208,7 @@
   <script src="/assets/vendor/venobox/venobox.min.js"></script>
   <script src="/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
   <script src="/assets/vendor/aos/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js" integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <!-- Template Main JS File -->
   <script src="/js/main.js"></script>
